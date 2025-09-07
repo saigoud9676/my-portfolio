@@ -1,0 +1,312 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, Phone, Download, ExternalLink, Moon, Sun, MapPin, ArrowRight, Code2, Cpu, Database, Rocket, GraduationCap } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+
+// ==========================
+// Single-file React Portfolio
+// Tailwind + shadcn/ui + Framer Motion
+// ==========================
+
+const projects = [
+  {
+    title: "Wildlife Monitoring with Drones (Real‑Time)",
+    highlight: true,
+    description:
+      "An end‑to‑end system that uses UAVs to capture aerial footage and a real‑time detection pipeline (YOLOv8 + DeepSORT) to monitor wildlife activity, flag poaching risks, and log GPS tracks.",
+    tech: ["Python", "PyTorch", "OpenCV", "YOLOv8", "DeepSORT", "FastAPI", "MQTT", "PostgreSQL"],
+    links: {
+      demo: "#",
+      repo: "#",
+    },
+  },
+  {
+    title: "AlgoViz: Interactive DSA Visualizer",
+    description:
+      "Web app to visualize sorting, graph traversal, disjoint sets, and backtracking with step controls and complexity insights.",
+    tech: ["TypeScript", "React", "Vite", "Tailwind", "D3.js"],
+    links: { demo: "#", repo: "#" },
+  },
+  {
+    title: "NLP Toolkit: Text Insights",
+    description:
+      "Utilities for tokenization, POS tagging, NER, topic modeling, and embeddings with a simple web dashboard.",
+    tech: ["Python", "spaCy", "scikit-learn", "FastAPI", "Plotly"],
+    links: { demo: "#", repo: "#" },
+  },
+];
+
+const skills = [
+  { name: "Languages", items: ["Python", "TypeScript", "C++", "SQL"] },
+  { name: "Frameworks", items: ["React", "FastAPI", "Node.js", "Express"] },
+  { name: "AI/ML", items: ["PyTorch", "OpenCV", "YOLO", "Pandas", "NumPy"] },
+  { name: "Cloud & Tools", items: ["Docker", "GitHub Actions", "PostgreSQL", "Linux"] },
+];
+
+const experience = [
+  {
+    role: "Computer Science Student / Developer",
+    org: "—",
+    period: "2023 — Present",
+    points: [
+      "Built end‑to‑end ML prototypes and deployed as containerized APIs.",
+      "Strong focus on algorithms & data structures (graphs, DSU, backtracking).",
+      "Collaborated via GitHub Projects and CI/CD with Actions.",
+    ],
+  },
+];
+
+const education = [
+  {
+    degree: "B.Tech / B.E. in Computer Science (in progress)",
+    school: "—",
+    period: "2022 — 2026",
+  },
+];
+
+export default function Portfolio() {
+  const [dark, setDark] = useState(true);
+
+  return (
+    <div className={dark ? "dark" : ""}>
+      <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/30 dark:from-[#0b0b12] dark:via-[#0b0b12] dark:to-[#0b0b12] text-foreground">
+        {/* Nav */}
+        <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-background/60 bg-background/70 border-b">
+          <nav className="max-w-6xl mx-auto flex items-center justify-between p-4">
+            <a href="#home" className="font-bold text-xl tracking-tight flex items-center gap-2">
+              <Code2 className="size-5" /> <span>Dev Portfolio</span>
+            </a>
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" asChild>
+                <a href="#projects">Projects</a>
+              </Button>
+              <Button variant="ghost" asChild>
+                <a href="#skills">Skills</a>
+              </Button>
+              <Button variant="ghost" asChild>
+                <a href="#about">About</a>
+              </Button>
+              <Button variant="outline" onClick={() => setDark((d) => !d)} aria-label="Toggle theme" className="ml-2">
+                {dark ? <Sun className="size-4" /> : <Moon className="size-4" />}
+              </Button>
+            </div>
+          </nav>
+        </header>
+
+        {/* Hero */}
+        <section id="home" className="max-w-6xl mx-auto px-4 py-16 md:py-24">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+              <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm mb-4">
+                <Rocket className="size-4" /> Open to opportunities
+              </div>
+              <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+                Hi, I'm <span className="bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500 bg-clip-text text-transparent">Saicharan Goud</span>
+              </h1>
+              <p className="mt-4 text-base md:text-lg text-muted-foreground max-w-prose">
+                Developer focused on AI/ML, computer vision, and crisp user experiences. I love turning ideas into well‑engineered products.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <Button asChild>
+                  <a href="#projects" className="group">
+                    View Projects <ArrowRight className="ml-2 size-4 group-hover:translate-x-0.5 transition" />
+                  </a>
+                </Button>
+                <Button variant="outline" asChild>
+                  <a href="#contact" className="group">
+                    Contact Me <Mail className="ml-2 size-4" />
+                  </a>
+                </Button>
+                <Button variant="ghost" asChild>
+                  <a href="https://github.com/" target="_blank" rel="noreferrer" className="group">
+                    <Github className="mr-2 size-4" /> GitHub
+                  </a>
+                </Button>
+                <Button variant="ghost" asChild>
+                  <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="group">
+                    <Linkedin className="mr-2 size-4" /> LinkedIn
+                  </a>
+                </Button>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-3 text-sm text-muted-foreground">
+                <span className="inline-flex items-center gap-1"><MapPin className="size-4" /> Hyderabad, Telangana</span>
+                <span className="inline-flex items-center gap-1"><Phone className="size-4" /> +91‑96767‑38261</span>
+                <span className="inline-flex items-center gap-1"><Mail className="size-4" /> saicharanmaragoni@gmail.com</span>
+              </div>
+
+              <div className="mt-6">
+                <Button variant="secondary" asChild>
+                  <a href="#" download>
+                    <Download className="mr-2 size-4" /> Download Resume (PDF)
+                  </a>
+                </Button>
+              </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
+              <Card className="rounded-2xl shadow-lg">
+                <CardContent className="p-6">
+                  <div className="grid grid-cols-3 gap-4">
+                    <Stat icon={<Cpu className="size-4" />} label="Models Deployed" value="6" />
+                    <Stat icon={<Database className="size-4" />} label="Datasets" value="12" />
+                    <Stat icon={<Code2 className="size-4" />} label="Repos" value="30+" />
+                  </div>
+                  <div className="mt-6 text-sm text-muted-foreground">
+                    Passionate about scalable systems, clean code, and shipping fast.
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Projects */}
+        <section id="projects" className="max-w-6xl mx-auto px-4 py-12 md:py-16">
+          <div className="flex items-end justify-between mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold">Projects</h2>
+            <a href="https://github.com/" target="_blank" rel="noreferrer" className="text-sm underline-offset-4 hover:underline">See all on GitHub</a>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((p, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.05 }}>
+                <Card className={`rounded-2xl h-full ${p.highlight ? "border-indigo-500/40 shadow-md" : ""}`}>
+                  <CardHeader>
+                    <CardTitle className="flex items-center justify-between">
+                      <span>{p.title}</span>
+                      {p.highlight && (
+                        <Badge variant="secondary" className="ml-2">Featured</Badge>
+                      )}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">{p.description}</p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {p.tech.map((t) => (
+                        <Badge key={t} variant="outline" className="rounded-full">{t}</Badge>
+                      ))}
+                    </div>
+                    <div className="flex gap-3 mt-4">
+                      <Button size="sm" asChild>
+                        <a href={p.links.demo} target="_blank" rel="noreferrer" className="inline-flex items-center">Live Demo <ExternalLink className="ml-2 size-4" /></a>
+                      </Button>
+                      <Button size="sm" variant="outline" asChild>
+                        <a href={p.links.repo} target="_blank" rel="noreferrer" className="inline-flex items-center">Code <Github className="ml-2 size-4" /></a>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Skills */}
+        <section id="skills" className="max-w-6xl mx-auto px-4 py-12 md:py-16">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">Skills</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {skills.map((group) => (
+              <Card key={group.name} className="rounded-2xl">
+                <CardHeader>
+                  <CardTitle>{group.name}</CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-wrap gap-2">
+                  {group.items.map((s) => (
+                    <Badge key={s} variant="outline" className="rounded-full">{s}</Badge>
+                  ))}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* About / Experience */}
+        <section id="about" className="max-w-6xl mx-auto px-4 py-12 md:py-16">
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="rounded-2xl">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2"><GraduationCap className="size-5" /> Experience</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-5">
+                {experience.map((e, i) => (
+                  <div key={i}>
+                    <div className="font-semibold">{e.role} <span className="text-muted-foreground">{e.org}</span></div>
+                    <div className="text-xs text-muted-foreground">{e.period}</div>
+                    <ul className="list-disc list-inside mt-2 text-sm text-muted-foreground space-y-1">
+                      {e.points.map((pt, j) => (
+                        <li key={j}>{pt}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="rounded-2xl">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2"><GraduationCap className="size-5" /> Education</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {education.map((ed, i) => (
+                  <div key={i}>
+                    <div className="font-semibold">{ed.degree}</div>
+                    <div className="text-sm text-muted-foreground">{ed.school}</div>
+                    <div className="text-xs text-muted-foreground">{ed.period}</div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="max-w-6xl mx-auto px-4 py-12 md:py-16">
+          <Card className="rounded-2xl">
+            <CardHeader>
+              <CardTitle>Contact</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form className="grid md:grid-cols-3 gap-4" action="mailto:saicharanmaragoni@gmail.com" method="post" encType="text/plain">
+                <Input name="name" placeholder="Your name" className="md:col-span-1" required />
+                <Input type="email" name="email" placeholder="Your email" className="md:col-span-1" required />
+                <Input name="subject" placeholder="Subject" className="md:col-span-1" required />
+                <Textarea name="message" placeholder="Message" className="md:col-span-3 min-h-28" required />
+                <div className="md:col-span-3 flex gap-3">
+                  <Button type="submit">Send</Button>
+                  <Button type="reset" variant="outline">Reset</Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Footer */}
+        <footer className="border-t">
+          <div className="max-w-6xl mx-auto px-4 py-8 text-xs text-muted-foreground flex flex-wrap gap-3 items-center justify-between">
+            <div>© {new Date().getFullYear()} Saicharan Goud. All rights reserved.</div>
+            <div className="flex items-center gap-3">
+              <a href="mailto:saicharanmaragoni@gmail.com" className="inline-flex items-center gap-1 hover:underline"><Mail className="size-3" /> Email</a>
+              <a href="tel:+919676738261" className="inline-flex items-center gap-1 hover:underline"><Phone className="size-3" /> Call</a>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:underline"><Linkedin className="size-3" /> LinkedIn</a>
+              <a href="https://github.com/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:underline"><Github className="size-3" /> GitHub</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  );
+}
+
+function Stat({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+  return (
+    <div className="rounded-2xl border p-4">
+      <div className="flex items-center gap-2 text-muted-foreground text-xs">{icon} {label}</div>
+      <div className="text-2xl font-bold mt-1">{value}</div>
+    </div>
+  );
+}
